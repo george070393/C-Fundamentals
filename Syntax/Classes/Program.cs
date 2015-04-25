@@ -2,6 +2,11 @@
 {
     using System;
 
+    public partial class TransactionDetail1{
+        
+        
+    }
+
     public partial class Transaction {
         
         public decimal GetAmountWithoutTaxIfIsValid()

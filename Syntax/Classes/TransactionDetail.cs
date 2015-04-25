@@ -1,6 +1,6 @@
 ﻿namespace Classes
 {
-    public class TransactionDetail
+    public partial class TransactionDetail
     {
         public decimal? Amount;
         internal decimal? Tax;
