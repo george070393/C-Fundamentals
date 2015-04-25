@@ -8,7 +8,7 @@ namespace MyHomework
 {
     class Leave
     {
-        private int startingDate;
+        private DateTime startingDate;
         private int duration;
         private string leaveType;
         private object employee;
@@ -20,9 +20,10 @@ namespace MyHomework
             set { employee = curent; }
         }
 
-        public void Leave(int startingDate, int duration, string leavetype)
+        public Leave(DateTime startingDate, int duration, string leavetype)
         {
-            
+            this.startingDate = startingDate;
+            //......
         }
     }
 }

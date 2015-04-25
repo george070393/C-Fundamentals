@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyHomework
 {
-    abstract class Person
+    public class Person
     {
-        internal string lastname;
-        internal string firstname;
-        internal int dateofbirth;
+        protected string lastname;
+        protected string firstname;
+        protected DateTime dateofbirth;
        // public virtual void lastname(string lastname)
        // {
        //     Console.WriteLine("Last Name:" , lastname);
