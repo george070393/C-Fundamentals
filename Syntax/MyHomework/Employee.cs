@@ -8,11 +8,11 @@ namespace MyHomework
 {
     internal class Employee : Person
     {
-        private DateTime dateOfEmployment;  //DateTime=tip date
+        private DateTime dateOfEmployment; //DateTime=tip date
         private int salary;
         private int availableDaysOff;
 
-        public Employee(string lastname, string firstname, DateTime dateofbirth, 
+        public Employee(string lastname, string firstname, DateTime dateofbirth,
             DateTime dateOfEmployment, int salary, int availableDaysOff)
         {
             this.lastname = lastname; //retine parametrul
@@ -26,7 +26,7 @@ namespace MyHomework
         public void DisplayInfo(string lastname, string firstname, int salary, int availableDaysOff)
         {
             this.lastname = lastname;
-            this.firstname = firstname;            
+            this.firstname = firstname;
             this.salary = salary;
             this.availableDaysOff = availableDaysOff;
             Console.WriteLine("Prenume: {0}, Nume: {1} , Salariu: {2} , Zile Libere: {3}", lastname, firstname, salary,
@@ -35,30 +35,41 @@ namespace MyHomework
 
         private int SubstractDays(int daysoff)
         {
-           
+
             availableDaysOff -= daysoff;
             return availableDaysOff;
         }
 
         public object AddNewLeave(DateTime startingDate, int duration, string leaveType)
         {
-            
+
             availableDaysOff = SubstractDays(duration);
             Leave curent = new Leave(startingDate, duration, leaveType);
+            if (availableDaysOff < duration)
+            {
+                throw new NegativeLeaveDays("Numarul de zile ramase nu poate fi mai mare decat durata concediului");
+            }
             return curent;
+           
+
 
         }
 
-        private static void NegativeLeaveDays(int duration, int availableDaysOff)
+        public class NegativeLeaveDays : Exception
         {
-            if (availableDaysOff - duration < 0)
+            public NegativeLeaveDays()
             {
-                throw new ArithmeticException("Numarul de zile ramase nu poate fi mai mare decat durata concediului",
-                    AddNewLeave);
+            }
+
+            public NegativeLeaveDays(string message)
+                : base(message)
+            {
+            }
+
+            public NegativeLeaveDays(string message, Exception inner)
+                : base(message, inner)
+            {
             }
         }
-
-        
     }
 }
-
