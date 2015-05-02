@@ -8,23 +8,28 @@ namespace MyHomework
 {
     class Leave
     {
+        
+        
         public DateTime startingDate;
         public int duration;
-        public string leaveType;
-        private object employee;
-        public object curent= null;
+        public Enum.LeaveType leaveType;
+        public int employeeId;
+        public static Leave employee = new Leave(new DateTime(2000,01 , 01), 0, Enum.LeaveType.Other, 0);
+        
 
-        public object currentLeave
+        public Leave(DateTime startingDate, int duration, Enum.LeaveType leaveType,int employeeId)
         {
-            get { return employee; }
-            set { employee = curent; }
-        }
-
-        public Leave(DateTime startingDate, int duration, string leavetype)
-        {
+           
             this.startingDate = startingDate;
             this.duration = duration;
-            this.leaveType = leavetype;
+            this.leaveType = leaveType;
+            this.employeeId = employeeId;
+
+        }
+
+        public override string ToString()
+        {
+            return "Prima zi de concediu: " + this.startingDate + " " + " Durata:" + this.duration + " " + "Tip concediu: " + this.leaveType + " " + "ID Angajat " + this.employeeId;
         }
     }
 }
